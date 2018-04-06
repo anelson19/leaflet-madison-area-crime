@@ -1,0 +1,8 @@
+{"type":"FeatureCollection", "features": [
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-89.49771615178601,43.03384751026761]},"properties":{"OBJECTID":6,"LONG_NAME":"West Police District","SHORT_NAME":"West","POLICE_STA":"A","COMMENT":"None","ADDRESS":"","URL":""}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-89.39599341481023,43.03952993306815]},"properties":{"OBJECTID":7,"LONG_NAME":"South Police District","SHORT_NAME":"South","POLICE_STA":"A","COMMENT":"None","ADDRESS":"","URL":""}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-89.35578852050483,43.12973914467924]},"properties":{"OBJECTID":8,"LONG_NAME":"North Police District","SHORT_NAME":"North","POLICE_STA":"A","COMMENT":"None","ADDRESS":"","URL":""}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-89.38271275792947,43.07218831868438]},"properties":{"OBJECTID":9,"LONG_NAME":"Main Police District","SHORT_NAME":"Main","POLICE_STA":"A","COMMENT":"None","ADDRESS":"","URL":""}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-89.28535444027395,43.08519459101138]},"properties":{"OBJECTID":10,"LONG_NAME":"East Police District","SHORT_NAME":"East","POLICE_STA":"A","COMMENT":"None","ADDRESS":"809 S Thompson Dr","URL":""}},
+{"type":"Feature","geometry":{"type":"Point","coordinates":[-89.44290932449994,43.06126710152274]},"properties":{"OBJECTID":11,"LONG_NAME":"Midtown Police District","SHORT_NAME":"Midtown","POLICE_STA":"P","COMMENT":"None","ADDRESS":"4018 Mineral Point Road","URL":""}}
+]}
