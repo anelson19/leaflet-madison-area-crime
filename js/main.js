@@ -4,17 +4,17 @@
 //Leaflet overlay using geojson: https://jsfiddle.net/qkvo7hav/7/
 //								 https://jsfiddle.net/qkvo7hav/6/
 				
-			
+		
 var osmLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>',
-            thunLink = '<a href="http://thunderforest.com/">Thunderforest</a>';
-        
-        var osmUrl = 'https://www.mapbox.com/studio/styles/anelson19/cjdf6cyr309ei2rrq42jjstha/edit/',
-            osmAttrib = '&copy; ' + osmLink + ' Contributors',
-            positronUrl = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
-            thunAttrib = '&copy; '+osmLink+' Contributors & '+thunLink;
+			thunLink = '<a href="http://thunderforest.com/">Thunderforest</a>';
+		
+		var osmUrl = 'https://www.mapbox.com/studio/styles/anelson19/cjdf6cyr309ei2rrq42jjstha/edit/',
+			osmAttrib = '&copy; ' + osmLink + ' Contributors',
+			positronUrl = 'https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png',
+			thunAttrib = '&copy; '+osmLink+' Contributors & '+thunLink;
 
-        var lightMap = L.tileLayer(osmUrl, {attribution: osmAttrib}),
-            positronMap = L.tileLayer(positronUrl, {attribution: thunAttrib});
+		var lightMap = L.tileLayer(osmUrl, {attribution: osmAttrib}),
+			positronMap = L.tileLayer(positronUrl, {attribution: thunAttrib});
 
 var map = L.map('map', {
 	center: [43.0740, -89.37],
@@ -36,6 +36,7 @@ L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=p
 	id: 'mapbox.light'
 }).addTo(map);
 
+
 var info = L.control();
 
 info.onAdd = function (map) {
@@ -53,27 +54,19 @@ info.update = function (props) {
 
 info.update_t = function (props) {
     this._div.innerHTML = '<h4>Madison Area, WI Crime</h4>' +  (props ?
-        '<b>' + props.MCD_NAME + '</b><br />' + 'Crime Index: ' + '<b>' + props.CRIME_IDX + '</b>' + ''
+        '<b>' + props.MCD_NAME + '</b><br />' + 'Crime Index (2016): ' + '<b>' + props.CRIME_IDX + '</b>' + ''
         : 'Hover over a district, town or village');
 };
 
 info.addTo(map);
 
-	
-function search(map, data, pointLayer){
-	var controlSearch = new L.Control.Search({
-		position:'topleft', 
-		layer: pointLayer,
-		propertyName:"ALD_DIST",
-		marker: false,
-	moveToLocation: function(latlng, title, map) {
-	//map.fitBounds( latlng.layer.getBounds() );
-		console.log(latlng)
-		//var zoom = map.getBoundsZoom(latlng.layer.getBounds());
-	map.setView(latlng,12); // access the zoom
-	}
-	});
-map.addControl( controlSearch );
+function getColor(d) {
+    return d > 320  ? '#006837' :
+           d > 240  ? '#31a354' :
+           d > 160   ? '#78c679' :
+           d > 80   ? '#c2e699' :
+           d > 0   ? '#ffffcc' :
+                      '#f7f7f7';
 }
 
 function highlightFeature(e) {
@@ -161,8 +154,8 @@ geojson = L.geoJson( districtData, {
 		//click: zoomToFeature
 	});
   }
-  
-}).addTo(map);
+});
+map.addLayer(geojson);
 });
 
 
@@ -177,10 +170,10 @@ townMA = L.geoJson( townData, {
 	else if ( town > 80 ) fillColor = "#c2e699";
 	else if ( town > 0 ) fillColor = "#ffffcc";
 	else fillColor = "#f7f7f7";  // no data
-	return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .6 };
+	return { color: "#999", weight: 2, fillColor: fillColor, fillOpacity: .6 };
   },
   onEachFeature: function( feature, layer ){
-	//layer.bindPopup( "<strong>" + feature.properties.MCD_NAME.toUpperCase() + "</strong><br/>" + feature.properties.CRIME_IDX)
+	layer.bindPopup( "<strong>" + feature.properties.MCD_NAME.toUpperCase() + "</strong><br/>" + feature.properties.CRIME_IDX)
 	    //event listeners to open popup on hover
 	layer.on({
 		mouseover: highlightFeature_t,
@@ -188,7 +181,18 @@ townMA = L.geoJson( townData, {
 		//click: zoomToFeature
 	});
   }
+  
 }).addTo(map);
+var controlSearch = new L.Control.Search({
+		position:'topright',		
+		layer: townMA,
+		propertyName: 'MCD_NAME',
+		initial: false,
+		zoom: 12,
+		marker: false
+	});
+
+	map.addControl( controlSearch );
 });
 
 
@@ -206,21 +210,21 @@ $.getJSON("data/2013_cl.geojson",function(crimeData){
 		return marker;
 	  }
 	});
-
+	
 	var clusters = L.markerClusterGroup();
 	clusters.addLayer(crimes);
 	map.addLayer(clusters);
-
+	
 	/* var overlaysObj = { 'All points': clusters.addTo(map) }
 	L.control.layers({collapsed: false}, overlaysObj).addTo(map); */
 
 
-$.getJSON("data/Police_Stations.geojson",function(data){
+$.getJSON("data/Police_Stations.geojson",function(psData){
     var blueIcon = L.icon({
       iconUrl: 'data/blue.png',
-      iconSize: [35,35]
+      iconSize: [30,30]
     });
-    var polStations = L.geoJson(data,{
+    var polStations = L.geoJson(psData,{
       pointToLayer: function(feature,latlng){
         var marker = L.marker(latlng,{icon: blueIcon});
         marker.bindPopup('<strong>'+feature.properties.LONG_NAME.toUpperCase() + '</strong>' + '<br/>' + feature.properties.ADDRESS);
@@ -232,11 +236,66 @@ $.getJSON("data/Police_Stations.geojson",function(data){
     map.addLayer(psClust);
 	
 	
-	var overlaysAll = { 'Crime Locations': clusters.addTo(map), 'Police Stations': psClust.addTo(map)}
+	var overlaysAll = { 'All Crime Locations': clusters.addTo(map), 'Police Stations': psClust.addTo(map)}
 	L.control.layers(baseLayers, overlaysAll, {position: 'topleft'}).addTo(map);
 });
 });
 
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+
+	var div = L.DomUtil.create('div', 'info legend'),
+		grades = [0, 80, 160, 240, 320],
+		labels = [],
+		from, to;
+
+	for (var i = 0; i < grades.length; i++) {
+		from = grades[i];
+		to = grades[i + 1];
+
+		labels.push(
+			'<i style="background:' + getColor(from + 1) + '"></i> ' +
+			from + (to ? '&ndash;' + to : '+'));
+	}
+
+	div.innerHTML = labels.join('<br>');
+	return div;
+};
+
+legend.addTo(map);
+
+function search(townMA){
+	var searchControl = new L.Control.Search({
+		layer: townMA,
+		propertyName: 'MCD_NAME',
+		marker: false,
+		moveToLocation: function(latlng, title, map) {
+			//map.fitBounds( latlng.layer.getBounds() );
+			var zoom = map.getBoundsZoom(latlng.layer.getBounds());
+			map.setView(latlng, zoom); // access the zoom
+	}
+	});
+
+	searchControl.on('search:locationfound', function(e) {
+		
+		//console.log('search:locationfound', );
+
+		//map.removeLayer(this._markerSearch)
+
+		e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
+		if(e.layer._popup)
+			e.layer.openPopup();
+
+	}).on('search:collapsed', function(e) {
+
+		townMA.eachLayer(function(layer) {	//restore feature color
+			townMA.resetStyle(layer);
+		});	
+	});
+	
+	map.addControl( searchControl );  //inizialize search control
+}
 
 
 
