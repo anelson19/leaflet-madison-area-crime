@@ -3,6 +3,7 @@
 //Leaflet cluster map + choropleth example: http://bl.ocks.org/awoodruff/5de3553bb1f1b0c5f90d
 //Leaflet overlay using geojson: https://jsfiddle.net/qkvo7hav/7/
 //								 https://jsfiddle.net/qkvo7hav/6/
+//Search multiple layers: http://labs.easyblog.it/maps/leaflet-search/examples/multiple-layers.html
 				
 		
 var osmLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>',
@@ -19,8 +20,12 @@ var osmLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>',
 var map = L.map('map', {
 	center: [43.0740, -89.37],
 	layers: [lightMap],
-	zoom: 11
-});
+	zoom: 11,
+	zoomControl: false
+})
+.setView([43.0740, -89.37], 11);
+var zoomHome = L.Control.zoomHome();
+zoomHome.addTo(map);
 
 var baseLayers = {
 			"Mapbox Light": lightMap,
@@ -156,6 +161,7 @@ geojson = L.geoJson( districtData, {
   }
 });
 map.addLayer(geojson);
+	//search(geojson, 'ALD_DIST');
 });
 
 
@@ -183,18 +189,8 @@ townMA = L.geoJson( townData, {
   }
   
 }).addTo(map);
-var controlSearch = new L.Control.Search({
-		position:'topright',		
-		layer: townMA,
-		propertyName: 'MCD_NAME',
-		initial: false,
-		zoom: 12,
-		marker: false
-	});
-
-	map.addControl( controlSearch );
+	search(townMA, 'MCD_NAME');
 });
-
 
 
 $.getJSON("data/2013_cl.geojson",function(crimeData){
@@ -231,13 +227,14 @@ $.getJSON("data/Police_Stations.geojson",function(psData){
         return marker;
       }
     });
+	
     var psClust = L.markerClusterGroup();
     psClust.addLayer(polStations);
     map.addLayer(psClust);
 	
-	
 	var overlaysAll = { 'All Crime Locations': clusters.addTo(map), 'Police Stations': psClust.addTo(map)}
 	L.control.layers(baseLayers, overlaysAll, {position: 'topleft'}).addTo(map);
+
 });
 });
 
@@ -265,36 +262,17 @@ legend.onAdd = function (map) {
 
 legend.addTo(map);
 
-function search(townMA){
-	var searchControl = new L.Control.Search({
-		layer: townMA,
-		propertyName: 'MCD_NAME',
-		marker: false,
-		moveToLocation: function(latlng, title, map) {
-			//map.fitBounds( latlng.layer.getBounds() );
-			var zoom = map.getBoundsZoom(latlng.layer.getBounds());
-			map.setView(latlng, zoom); // access the zoom
-	}
+function search(dataName, propName){
+	var controlSearch = new L.Control.Search({
+		position:'topleft',		
+		layer: dataName,
+		propertyName: propName,
+		initial: false,
+		zoom: 12,
+		marker: false
 	});
 
-	searchControl.on('search:locationfound', function(e) {
-		
-		//console.log('search:locationfound', );
-
-		//map.removeLayer(this._markerSearch)
-
-		e.layer.setStyle({fillColor: '#3f0', color: '#0f0'});
-		if(e.layer._popup)
-			e.layer.openPopup();
-
-	}).on('search:collapsed', function(e) {
-
-		townMA.eachLayer(function(layer) {	//restore feature color
-			townMA.resetStyle(layer);
-		});	
-	});
-	
-	map.addControl( searchControl );  //inizialize search control
+	map.addControl( controlSearch );
 }
 
 
