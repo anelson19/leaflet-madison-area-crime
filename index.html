@@ -4,17 +4,39 @@
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
   <link rel="stylesheet" href="MarkerCluster.css" />
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="lib/leaflet-search-master/src/leaflet-search.css" />
   <link rel="stylesheet" href="lib/leaflet.zoomhome-master/dist/leaflet.zoomhome.css"/>
+  <link rel="stylesheet" href="lib/leaflet_awesome_markers.css">
+  <link rel="stylesheet" href="lib/leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
+  <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+  
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
   <script src="lib/leaflet-markercluster.js"></script>
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="lib/leaflet_awesome_markers.js"></script>
+  <script type="text/javascript" src="/lib/leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js"></script>
  
 	<!--my stylesheet-->
 	<link rel="stylesheet" href="css/style.css">
  
 </head>
 <body>
+ 
+  <div class="btn-group">
+        <button type="button" id="allCrime" class="btn btn-success">All Crimes</button>
+		<button type="button" id="districtNone" class="btn btn-danger">Not in District</button>
+		<button type="button" id="districtOne" class="btn btn-danger">District 1</button>
+		<button type="button" id="districtTwo" class="btn btn-danger">District 2</button>
+		<button type="button" id="districtThree" class="btn btn-danger">District 3</button>
+		<button type="button" id="districtFour" class="btn btn-danger">District 4</button>
+		<button type="button" id="districtFive" class="btn btn-danger">District 5</button>
+		<button type="button" id="districtSix" class="btn btn-danger">District 6</button>
+		<button type="button" id="districtSeven" class="btn btn-danger">District 7</button>
+		<button type="button" id="districtEight" class="btn btn-danger">District 8</button>
+		<button type="button" id="districtNine" class="btn btn-danger">District 9</button>
+		<button type="button" id="districtTen" class="btn btn-danger">District 10</button>
+  </div>
  
   <div id="map"></div>
   

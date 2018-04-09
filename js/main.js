@@ -4,6 +4,10 @@
 //Leaflet overlay using geojson: https://jsfiddle.net/qkvo7hav/7/
 //								 https://jsfiddle.net/qkvo7hav/6/
 //Search multiple layers: http://labs.easyblog.it/maps/leaflet-search/examples/multiple-layers.html
+//Leaflet Dropdown: https://gis.stackexchange.com/questions/131157/adding-drop-down-menu-on-leaflet-map-instead-of-l-control
+//Bootstrap dropdown: https://www.w3schools.com/bootstrap/bootstrap_dropdowns.asp
+//font awesome: https://fontawesome.com/icons?d=gallery
+//Filter Buttons: http://bl.ocks.org/zross/47760925fcb1643b4225
 				
 		
 var osmLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>',
@@ -54,13 +58,13 @@ info.onAdd = function (map) {
 info.update = function (props) {
     this._div.innerHTML = '<h4>Madison Area, WI Crime</h4>' +  (props ?
         '<b>' + 'District ' + props.ALD_DIST + '</b><br />' + props.OBJECTID + ''
-        : 'Hover over a district, town or village');
+        : 'Hover over a district, city or village');
 };
 
 info.update_t = function (props) {
     this._div.innerHTML = '<h4>Madison Area, WI Crime</h4>' +  (props ?
         '<b>' + props.MCD_NAME + '</b><br />' + 'Crime Index (2016): ' + '<b>' + props.CRIME_IDX + '</b>' + ''
-        : 'Hover over a district, town or village');
+        : 'Hover over a district, city or village');
 };
 
 info.addTo(map);
@@ -162,7 +166,7 @@ geojson = L.geoJson( districtData, {
 });
 map.addLayer(geojson);
 	//search(geojson, 'ALD_DIST');
-});
+
 
 
 $.getJSON("data/towns_villages_near_madison.geojson",function(townData){
@@ -191,25 +195,328 @@ townMA = L.geoJson( townData, {
 }).addTo(map);
 	search(townMA, 'MCD_NAME');
 });
+});
 
 
-$.getJSON("data/2013_cl.geojson",function(crimeData){
-	var pinIcon = L.icon({
-	  iconUrl: 'data/map-marker.png',
-	  iconSize: [35,35]
-	});
+$.getJSON("data/2013_cl2.geojson",function(crimeData){
+	var crimeIcon = L.AwesomeMarkers.icon({
+        prefix: 'fa', //font awesome rather than bootstrap
+        markerColor: 'red', // see colors above
+        icon: 'exclamation-circle' //http://fortawesome.github.io/Font-Awesome/icons/
+    });
 	var myStyle = { radius: 10, fillOpacity: 1, stroke: false, weight: 1, opacity: 1, fill: true, clickable: true };
-	var crimes = L.geoJson(crimeData,{
+	/* var crimes = L.geoJson(crimeData,{
 	  pointToLayer: function(feature,latlng){
-		var marker = L.marker(latlng,{icon: pinIcon});
-		marker.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo);
+		var marker = L.marker(latlng,{icon: crimeIcon});
+		marker.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' 
+		+ 'Location Type: ' + feature.properties.poi_type);
 		return marker;
 	  }
-	});
-	
-	var clusters = L.markerClusterGroup();
-	clusters.addLayer(crimes);
-	map.addLayer(clusters);
+	}); */
+	var crimes = L.geoJson(crimeData);
+        var districtNone = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "None";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtOne = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "1";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtTwo = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "2";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtThree = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "3";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtFour = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "4";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtFive = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "5";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtSix = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "6";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtSeven = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "7";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtEight = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "8";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtNine = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "9";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtTen = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "10";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		
+		var clusters = L.markerClusterGroup();
+			clusters.addLayer(districtNone)
+			clusters.addLayer(districtOne)
+			clusters.addLayer(districtTwo)
+			clusters.addLayer(districtThree)
+			clusters.addLayer(districtFour)
+			clusters.addLayer(districtFive)
+			clusters.addLayer(districtSix)
+			clusters.addLayer(districtSeven)
+			clusters.addLayer(districtEight)
+			clusters.addLayer(districtNine)
+			clusters.addLayer(districtTen)
+
+		$("#allCrime").click(function() {
+            clusters.addLayer(districtNone)
+			clusters.addLayer(districtOne)
+			clusters.addLayer(districtTwo)
+			clusters.addLayer(districtThree)
+			clusters.addLayer(districtFour)
+			clusters.addLayer(districtFive)
+			clusters.addLayer(districtSix)
+			clusters.addLayer(districtSeven)
+			clusters.addLayer(districtEight)
+			clusters.addLayer(districtNine)
+			clusters.addLayer(districtTen)
+        });
+		$("#districtNone").click(function() {
+            clusters.addLayer(districtNone)
+            clusters.removeLayer(districtOne)
+            clusters.removeLayer(districtTwo)
+			clusters.removeLayer(districtThree)
+			clusters.removeLayer(districtFour)
+			clusters.removeLayer(districtFive)
+			clusters.removeLayer(districtSix)
+			clusters.removeLayer(districtSeven)
+			clusters.removeLayer(districtEight)
+			clusters.removeLayer(districtNine)
+			clusters.removeLayer(districtTen)
+        });
+		$("#districtOne").click(function() {
+			clusters.addLayer(districtOne)
+            clusters.removeLayer(districtNone)
+            clusters.removeLayer(districtTwo)
+			clusters.removeLayer(districtThree)
+			clusters.removeLayer(districtFour)
+			clusters.removeLayer(districtFive)
+			clusters.removeLayer(districtSix)
+			clusters.removeLayer(districtSeven)
+			clusters.removeLayer(districtEight)
+			clusters.removeLayer(districtNine)
+			clusters.removeLayer(districtTen)
+        });
+		$("#districtTwo").click(function() {
+			clusters.addLayer(districtTwo)
+            clusters.removeLayer(districtNone)
+            clusters.removeLayer(districtOne)
+			clusters.removeLayer(districtThree)
+			clusters.removeLayer(districtFour)
+			clusters.removeLayer(districtFive)
+			clusters.removeLayer(districtSix)
+			clusters.removeLayer(districtSeven)
+			clusters.removeLayer(districtEight)
+			clusters.removeLayer(districtNine)
+			clusters.removeLayer(districtTen)
+        });
+		$("#districtThree").click(function() {
+			clusters.addLayer(districtThree)
+            clusters.removeLayer(districtNone)
+            clusters.removeLayer(districtOne)
+			clusters.removeLayer(districtTwo)
+			clusters.removeLayer(districtFour)
+			clusters.removeLayer(districtFive)
+			clusters.removeLayer(districtSix)
+			clusters.removeLayer(districtSeven)
+			clusters.removeLayer(districtEight)
+			clusters.removeLayer(districtNine)
+			clusters.removeLayer(districtTen)
+        });
+		$("#districtFour").click(function() {
+            clusters.addLayer(districtFour)
+			clusters.removeLayer(districtNone)
+			clusters.removeLayer(districtOne)
+            clusters.removeLayer(districtTwo)
+			clusters.removeLayer(districtThree)
+			clusters.removeLayer(districtFive)
+			clusters.removeLayer(districtSix)
+			clusters.removeLayer(districtSeven)
+			clusters.removeLayer(districtEight)
+			clusters.removeLayer(districtNine)
+			clusters.removeLayer(districtTen)
+        });
+		$("#districtFive").click(function() {
+            clusters.addLayer(districtFive)
+			clusters.removeLayer(districtNone)
+			clusters.removeLayer(districtOne)
+            clusters.removeLayer(districtTwo)
+			clusters.removeLayer(districtThree)
+			clusters.removeLayer(districtFour)
+			clusters.removeLayer(districtSix)
+			clusters.removeLayer(districtSeven)
+			clusters.removeLayer(districtEight)
+			clusters.removeLayer(districtNine)
+			clusters.removeLayer(districtTen)
+        });
+		$("#districtSix").click(function() {
+            clusters.addLayer(districtSix)
+			clusters.removeLayer(districtNone)
+			clusters.removeLayer(districtOne)
+            clusters.removeLayer(districtTwo)
+			clusters.removeLayer(districtThree)
+			clusters.removeLayer(districtFour)
+			clusters.removeLayer(districtFive)
+			clusters.removeLayer(districtSeven)
+			clusters.removeLayer(districtEight)
+			clusters.removeLayer(districtNine)
+			clusters.removeLayer(districtTen)
+        });
+		$("#districtSeven").click(function() {
+            clusters.addLayer(districtSeven)
+			clusters.removeLayer(districtNone)
+			clusters.removeLayer(districtOne)
+            clusters.removeLayer(districtTwo)
+			clusters.removeLayer(districtThree)
+			clusters.removeLayer(districtFour)
+			clusters.removeLayer(districtFive)
+			clusters.removeLayer(districtSix)
+			clusters.removeLayer(districtEight)
+			clusters.removeLayer(districtNine)
+			clusters.removeLayer(districtTen)
+        });
+		$("#districtEight").click(function() {
+            clusters.addLayer(districtEight)
+			clusters.removeLayer(districtNone)
+			clusters.removeLayer(districtOne)
+            clusters.removeLayer(districtTwo)
+			clusters.removeLayer(districtThree)
+			clusters.removeLayer(districtFour)
+			clusters.removeLayer(districtFive)
+			clusters.removeLayer(districtSix)
+			clusters.removeLayer(districtSeven)
+			clusters.removeLayer(districtNine)
+			clusters.removeLayer(districtTen)
+        });
+		$("#districtNine").click(function() {
+            clusters.addLayer(districtNine)
+			clusters.removeLayer(districtNone)
+			clusters.removeLayer(districtOne)
+            clusters.removeLayer(districtTwo)
+			clusters.removeLayer(districtThree)
+			clusters.removeLayer(districtFour)
+			clusters.removeLayer(districtFive)
+			clusters.removeLayer(districtSix)
+			clusters.removeLayer(districtSeven)
+			clusters.removeLayer(districtEight)
+			clusters.removeLayer(districtTen)
+        });
+		$("#districtTen").click(function() {
+            clusters.addLayer(districtTen)
+			clusters.removeLayer(districtNone)
+			clusters.removeLayer(districtOne)
+            clusters.removeLayer(districtTwo)
+			clusters.removeLayer(districtThree)
+			clusters.removeLayer(districtFour)
+			clusters.removeLayer(districtFive)
+			clusters.removeLayer(districtSix)
+			clusters.removeLayer(districtSeven)
+			clusters.removeLayer(districtEight)
+			clusters.removeLayer(districtNine)
+        });
+		map.addLayer(clusters);
 	
 	/* var overlaysObj = { 'All points': clusters.addTo(map) }
 	L.control.layers({collapsed: false}, overlaysObj).addTo(map); */
@@ -223,7 +530,8 @@ $.getJSON("data/Police_Stations.geojson",function(psData){
     var polStations = L.geoJson(psData,{
       pointToLayer: function(feature,latlng){
         var marker = L.marker(latlng,{icon: blueIcon});
-        marker.bindPopup('<strong>'+feature.properties.LONG_NAME.toUpperCase() + '</strong>' + '<br/>' + feature.properties.ADDRESS);
+        marker.bindPopup('<strong>'+feature.properties.LONG_NAME.toUpperCase() + '</strong>' + '<br/>' + feature.properties.ADDRESS
+		+ '<br/>' + 'Location Type: ' + feature.properties.poi_type);
         return marker;
       }
     });
@@ -232,7 +540,7 @@ $.getJSON("data/Police_Stations.geojson",function(psData){
     psClust.addLayer(polStations);
     map.addLayer(psClust);
 	
-	var overlaysAll = { 'All Crime Locations': clusters.addTo(map), 'Police Stations': psClust.addTo(map)}
+	var overlaysAll = {'Police Stations': psClust.addTo(map)}
 	L.control.layers(baseLayers, overlaysAll, {position: 'topleft'}).addTo(map);
 
 });
@@ -269,7 +577,11 @@ function search(dataName, propName){
 		propertyName: propName,
 		initial: false,
 		zoom: 12,
-		marker: false
+		marker: false,
+		buildTip: function(text, val) {
+			var type = val.layer.feature.properties.poi_type;
+			return '<a href="#" class="'+type+'">'+text+'<b>'+type+'</b></a>';
+		}
 	});
 
 	map.addControl( controlSearch );
