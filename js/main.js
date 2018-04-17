@@ -348,6 +348,42 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 });
             }
         });
+		var districtEleven = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "11";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtTwelve = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "12";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
+		var districtThirteen = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "13";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                });
+            }
+        });
 		
 		var clusters = L.markerClusterGroup();
 			clusters.addLayer(districtNone)
@@ -361,165 +397,9 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 			clusters.addLayer(districtEight)
 			clusters.addLayer(districtNine)
 			clusters.addLayer(districtTen)
-
-		$("#allCrime").click(function() {
-            clusters.addLayer(districtNone)
-			clusters.addLayer(districtOne)
-			clusters.addLayer(districtTwo)
-			clusters.addLayer(districtThree)
-			clusters.addLayer(districtFour)
-			clusters.addLayer(districtFive)
-			clusters.addLayer(districtSix)
-			clusters.addLayer(districtSeven)
-			clusters.addLayer(districtEight)
-			clusters.addLayer(districtNine)
-			clusters.addLayer(districtTen)
-        });
-		$("#districtNone").click(function() {
-            clusters.addLayer(districtNone)
-            clusters.removeLayer(districtOne)
-            clusters.removeLayer(districtTwo)
-			clusters.removeLayer(districtThree)
-			clusters.removeLayer(districtFour)
-			clusters.removeLayer(districtFive)
-			clusters.removeLayer(districtSix)
-			clusters.removeLayer(districtSeven)
-			clusters.removeLayer(districtEight)
-			clusters.removeLayer(districtNine)
-			clusters.removeLayer(districtTen)
-        });
-		$("#districtOne").click(function() {
-			clusters.addLayer(districtOne)
-            clusters.removeLayer(districtNone)
-            clusters.removeLayer(districtTwo)
-			clusters.removeLayer(districtThree)
-			clusters.removeLayer(districtFour)
-			clusters.removeLayer(districtFive)
-			clusters.removeLayer(districtSix)
-			clusters.removeLayer(districtSeven)
-			clusters.removeLayer(districtEight)
-			clusters.removeLayer(districtNine)
-			clusters.removeLayer(districtTen)
-        });
-		$("#districtTwo").click(function() {
-			clusters.addLayer(districtTwo)
-            clusters.removeLayer(districtNone)
-            clusters.removeLayer(districtOne)
-			clusters.removeLayer(districtThree)
-			clusters.removeLayer(districtFour)
-			clusters.removeLayer(districtFive)
-			clusters.removeLayer(districtSix)
-			clusters.removeLayer(districtSeven)
-			clusters.removeLayer(districtEight)
-			clusters.removeLayer(districtNine)
-			clusters.removeLayer(districtTen)
-        });
-		$("#districtThree").click(function() {
-			clusters.addLayer(districtThree)
-            clusters.removeLayer(districtNone)
-            clusters.removeLayer(districtOne)
-			clusters.removeLayer(districtTwo)
-			clusters.removeLayer(districtFour)
-			clusters.removeLayer(districtFive)
-			clusters.removeLayer(districtSix)
-			clusters.removeLayer(districtSeven)
-			clusters.removeLayer(districtEight)
-			clusters.removeLayer(districtNine)
-			clusters.removeLayer(districtTen)
-        });
-		$("#districtFour").click(function() {
-            clusters.addLayer(districtFour)
-			clusters.removeLayer(districtNone)
-			clusters.removeLayer(districtOne)
-            clusters.removeLayer(districtTwo)
-			clusters.removeLayer(districtThree)
-			clusters.removeLayer(districtFive)
-			clusters.removeLayer(districtSix)
-			clusters.removeLayer(districtSeven)
-			clusters.removeLayer(districtEight)
-			clusters.removeLayer(districtNine)
-			clusters.removeLayer(districtTen)
-        });
-		$("#districtFive").click(function() {
-            clusters.addLayer(districtFive)
-			clusters.removeLayer(districtNone)
-			clusters.removeLayer(districtOne)
-            clusters.removeLayer(districtTwo)
-			clusters.removeLayer(districtThree)
-			clusters.removeLayer(districtFour)
-			clusters.removeLayer(districtSix)
-			clusters.removeLayer(districtSeven)
-			clusters.removeLayer(districtEight)
-			clusters.removeLayer(districtNine)
-			clusters.removeLayer(districtTen)
-        });
-		$("#districtSix").click(function() {
-            clusters.addLayer(districtSix)
-			clusters.removeLayer(districtNone)
-			clusters.removeLayer(districtOne)
-            clusters.removeLayer(districtTwo)
-			clusters.removeLayer(districtThree)
-			clusters.removeLayer(districtFour)
-			clusters.removeLayer(districtFive)
-			clusters.removeLayer(districtSeven)
-			clusters.removeLayer(districtEight)
-			clusters.removeLayer(districtNine)
-			clusters.removeLayer(districtTen)
-        });
-		$("#districtSeven").click(function() {
-            clusters.addLayer(districtSeven)
-			clusters.removeLayer(districtNone)
-			clusters.removeLayer(districtOne)
-            clusters.removeLayer(districtTwo)
-			clusters.removeLayer(districtThree)
-			clusters.removeLayer(districtFour)
-			clusters.removeLayer(districtFive)
-			clusters.removeLayer(districtSix)
-			clusters.removeLayer(districtEight)
-			clusters.removeLayer(districtNine)
-			clusters.removeLayer(districtTen)
-        });
-		$("#districtEight").click(function() {
-            clusters.addLayer(districtEight)
-			clusters.removeLayer(districtNone)
-			clusters.removeLayer(districtOne)
-            clusters.removeLayer(districtTwo)
-			clusters.removeLayer(districtThree)
-			clusters.removeLayer(districtFour)
-			clusters.removeLayer(districtFive)
-			clusters.removeLayer(districtSix)
-			clusters.removeLayer(districtSeven)
-			clusters.removeLayer(districtNine)
-			clusters.removeLayer(districtTen)
-        });
-		$("#districtNine").click(function() {
-            clusters.addLayer(districtNine)
-			clusters.removeLayer(districtNone)
-			clusters.removeLayer(districtOne)
-            clusters.removeLayer(districtTwo)
-			clusters.removeLayer(districtThree)
-			clusters.removeLayer(districtFour)
-			clusters.removeLayer(districtFive)
-			clusters.removeLayer(districtSix)
-			clusters.removeLayer(districtSeven)
-			clusters.removeLayer(districtEight)
-			clusters.removeLayer(districtTen)
-        });
-		$("#districtTen").click(function() {
-            clusters.addLayer(districtTen)
-			clusters.removeLayer(districtNone)
-			clusters.removeLayer(districtOne)
-            clusters.removeLayer(districtTwo)
-			clusters.removeLayer(districtThree)
-			clusters.removeLayer(districtFour)
-			clusters.removeLayer(districtFive)
-			clusters.removeLayer(districtSix)
-			clusters.removeLayer(districtSeven)
-			clusters.removeLayer(districtEight)
-			clusters.removeLayer(districtNine)
-        });
+			clusters.addLayer(districtEleven)
 		
-		$("#basemapList li").click(function(e) {
+		$("#districtList li").click(function(e) {
 			switch (e.target.text) {
 			  case "All Crimes":
 				clusters.addLayer(districtNone)
@@ -533,6 +413,21 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.addLayer(districtEight)
 				clusters.addLayer(districtNine)
 				clusters.addLayer(districtTen)
+				clusters.addLayer(districtEleven)
+				break;
+			  case "Not in District":
+				clusters.addLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
 				break;
 			  case "District 1":
 				clusters.addLayer(districtOne)
@@ -546,21 +441,179 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtEight)
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
 				break;
-			  case "National Geographic":
-				map.setBasemap("national-geographic");
+			  case "District 2":
+				clusters.addLayer(districtTwo)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
 				break;
-			  case "Topographic":
-				map.setBasemap("topo");
+			  case "District 3":
+				clusters.addLayer(districtThree)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
 				break;
-			  case "Gray":
-				map.setBasemap("gray");
+			  case "District 4":
+				clusters.addLayer(districtFour)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
 				break;
-			  case "DarkGray":
-				map.setBasemap("dark-gray");
+			  case "District 5":
+				clusters.addLayer(districtFive)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
 				break;
-			  case "Open Street Map":
-				map.setBasemap("osm");
+			  case "District 6":
+				clusters.addLayer(districtSix)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				break;
+			  case "District 7":
+				clusters.addLayer(districtSeven)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				break;
+			  case "District 8":
+			    clusters.addLayer(districtEight)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				break;
+			  case "District 9":
+			    clusters.addLayer(districtNine)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				break;
+			  case "District 10":
+			    clusters.addLayer(districtTen)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtEleven)
+				break;
+			  case "District 11":
+			    clusters.addLayer(districtEleven)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				break;
+			  case "District 12":
+			    clusters.addLayer(districtTwelve)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				break;
+			  case "District 13":
+			    clusters.addLayer(districtThirteen)
+				break;
+			  case "District 14":
+				break;
+			  case "District 15":
+				break;
+			  case "District 16":
+				break;
+			  case "District 17":
+				break;
+			  case "District 18":
+				break;
+			  case "District 19":
+				break;
+			  case "District 20":
 				break;
 			}
 			if ($(".navbar-collapse.in").length > 0) {

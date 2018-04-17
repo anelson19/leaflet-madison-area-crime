@@ -27,8 +27,66 @@
  
 </head>
 <body>
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html"><img class="navbar-brand-image" src="../img/handcuffs.png">Madison Area CrimeMapper</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <!-- <li><a href="getstarted.html">Get Started</a></li> -->
+            <li class="active dropdown" id="districtList">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown">Districts <b class="caret"></b></a>
+              <ul class="dropdown-menu" id="myDropdown">
+				<li><a href="#">All Crimes</a></li>
+				<li class="divider"></li>
+				<li><a href="#">Not in District</a></li>
+                <li><a href="#">District 1</a></li>
+                <li><a href="#">District 2</a></li>
+                <li><a href="#">District 3</a></li>
+                <li><a href="#">District 4</a></li>
+                <li><a href="#">District 5</a></li>
+                <li><a href="#">District 6</a></li>
+                <li><a href="#">District 7</a></li>
+				<li><a href="#">District 8</a></li>
+				<li><a href="#">District 9</a></li>
+				<li><a href="#">District 10</a></li>
+                <li><a href="#">District 11</a></li>
+                <li><a href="#">District 12</a></li>
+                <li><a href="#">District 13</a></li>
+                <li><a href="#">District 14</a></li>
+                <li><a href="#">District 15</a></li>
+                <li><a href="#">District 16</a></li>
+				<li><a href="#">District 17</a></li>
+				<li><a href="#">District 18</a></li>
+				<li><a href="#">District 19</a></li>
+				<li><a href="#">District 20</a></li>
+              </ul>
+            </li>
+            <li><a href="grid.html">Incident Type</a></li>
+            <li><a href="webmap.html">Arrested</a></li>
+            <li><a href="media.html">@Media</a></li>
+            <li><a href="windows.html">Windows</a></li>             
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <!-- <a href="" class="dropdown-toggle" data-toggle="dropdown">Dojo <b class="caret"></b></a> -->
+              <ul class="dropdown-menu">
+                <li><a href="../jquery/maps.html">jQuery</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </div>
  
-  <div class="btn-group">
+<!--   <div class="btn-group">
         <button type="button" id="allCrime" class="btn btn-success">All Crimes</button>
 		<button type="button" id="districtNone" class="btn btn-danger">Not in District</button>
 		<button type="button" id="districtOne" class="btn btn-danger">District 1</button>
@@ -41,9 +99,9 @@
 		<button type="button" id="districtEight" class="btn btn-danger">District 8</button>
 		<button type="button" id="districtNine" class="btn btn-danger">District 9</button>
 		<button type="button" id="districtTen" class="btn btn-danger">District 10</button>
-  </div>
+  </div> -->
   
-  <div class="dropdown">
+<!--   <div class="dropdown">
 	<button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials<span class="caret"></span></button>
 	<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
 	  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
@@ -52,9 +110,9 @@
 	  <li role="presentation" class="divider"></li>
 	  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
 	</ul>
-  </div>
+  </div> -->
   
-  <div class="dropdown">
+<!--   <div class="dropdown">
 	<li class="btn btn-default dropdown-toggle" type="button" id="basemapList" data-toggle="dropdown">
 	  <a href="" class="dropdown-toggle" data-toggle="dropdown">Districts <b class="caret"></b></a>
 	  <ul class="dropdown-menu" id="myDropdown" role="menu" aria-labelledby="basemapList">
@@ -68,7 +126,8 @@
 		<li><a href="#">Open Street Map</a></li>
 	  </ul>
 	</li>
-   </div>
+  </div> -->
+  
  
   <div id="map"></div>
   
