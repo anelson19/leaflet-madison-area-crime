@@ -121,3 +121,15 @@ button {
 	font-size: 11px;
 }
 
+.dropdown{
+	margin-left: 100px;
+	
+}
+div .dropdown #basemapList{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+a {
+	color: black;
+}
+

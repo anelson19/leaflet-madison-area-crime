@@ -8,6 +8,8 @@
 //Bootstrap dropdown: https://www.w3schools.com/bootstrap/bootstrap_dropdowns.asp
 //font awesome: https://fontawesome.com/icons?d=gallery
 //Filter Buttons: http://bl.ocks.org/zross/47760925fcb1643b4225
+//JQuery Dropdown examplehttp://esri.github.io/bootstrap-map-js/demo/jquery/maps.html#
+//https://gis.stackexchange.com/questions/129891/javascript-arcgis-dropdown-menu-with-layers?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 				
 		
 var osmLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>',
@@ -516,6 +518,56 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 			clusters.removeLayer(districtEight)
 			clusters.removeLayer(districtNine)
         });
+		
+		$("#basemapList li").click(function(e) {
+			switch (e.target.text) {
+			  case "All Crimes":
+				clusters.addLayer(districtNone)
+				clusters.addLayer(districtOne)
+				clusters.addLayer(districtTwo)
+				clusters.addLayer(districtThree)
+				clusters.addLayer(districtFour)
+				clusters.addLayer(districtFive)
+				clusters.addLayer(districtSix)
+				clusters.addLayer(districtSeven)
+				clusters.addLayer(districtEight)
+				clusters.addLayer(districtNine)
+				clusters.addLayer(districtTen)
+				break;
+			  case "District 1":
+				clusters.addLayer(districtOne)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				break;
+			  case "National Geographic":
+				map.setBasemap("national-geographic");
+				break;
+			  case "Topographic":
+				map.setBasemap("topo");
+				break;
+			  case "Gray":
+				map.setBasemap("gray");
+				break;
+			  case "DarkGray":
+				map.setBasemap("dark-gray");
+				break;
+			  case "Open Street Map":
+				map.setBasemap("osm");
+				break;
+			}
+			if ($(".navbar-collapse.in").length > 0) {
+			  $(".navbar-toggle").click();
+			}
+		  });
+		
 		map.addLayer(clusters);
 	
 	/* var overlaysObj = { 'All points': clusters.addTo(map) }

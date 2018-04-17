@@ -16,6 +16,11 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script type="text/javascript" src="lib/leaflet_awesome_markers.js"></script>
   <script type="text/javascript" src="/lib/leaflet.awesome-markers/dist/leaflet.awesome-markers.min.js"></script>
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
  
 	<!--my stylesheet-->
 	<link rel="stylesheet" href="css/style.css">
@@ -37,6 +42,33 @@
 		<button type="button" id="districtNine" class="btn btn-danger">District 9</button>
 		<button type="button" id="districtTen" class="btn btn-danger">District 10</button>
   </div>
+  
+  <div class="dropdown">
+	<button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Tutorials<span class="caret"></span></button>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+	  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+	  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+	  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+	  <li role="presentation" class="divider"></li>
+	  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+	</ul>
+  </div>
+  
+  <div class="dropdown">
+	<li class="btn btn-default dropdown-toggle" type="button" id="basemapList" data-toggle="dropdown">
+	  <a href="" class="dropdown-toggle" data-toggle="dropdown">Districts <b class="caret"></b></a>
+	  <ul class="dropdown-menu" id="myDropdown" role="menu" aria-labelledby="basemapList">
+		<li><a href="#">All Crimes</a></li>
+		<li class="divider"></li>
+		<li><a href="#">District 1</a></li>
+		<li><a href="#">National Geographic</a></li>
+		<li><a href="#">Topographic</a></li>
+		<li><a href="#">Gray</a></li>
+		<li><a href="#">DarkGray</a></li>
+		<li><a href="#">Open Street Map</a></li>
+	  </ul>
+	</li>
+   </div>
  
   <div id="map"></div>
   
