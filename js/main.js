@@ -10,6 +10,7 @@
 //Filter Buttons: http://bl.ocks.org/zross/47760925fcb1643b4225
 //JQuery Dropdown examplehttp://esri.github.io/bootstrap-map-js/demo/jquery/maps.html#
 //https://gis.stackexchange.com/questions/129891/javascript-arcgis-dropdown-menu-with-layers?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
+//https://www.youtube.com/watch?v=PnUWcPQnZw4
 				
 		
 var osmLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>',
@@ -200,7 +201,7 @@ townMA = L.geoJson( townData, {
 });
 
 
-$.getJSON("data/2013_cl2.geojson",function(crimeData){
+$.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
 	var crimeIcon = L.AwesomeMarkers.icon({
         prefix: 'fa', //font awesome rather than bootstrap
         markerColor: 'red', // see colors above
@@ -210,7 +211,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 	/* var crimes = L.geoJson(crimeData,{
 	  pointToLayer: function(feature,latlng){
 		var marker = L.marker(latlng,{icon: crimeIcon});
-		marker.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' 
+		marker.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' 
 		+ 'Location Type: ' + feature.properties.poi_type);
 		return marker;
 	  }
@@ -224,7 +225,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
                     icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -236,7 +237,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -248,7 +249,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -260,7 +261,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -272,7 +273,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -284,7 +285,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -296,7 +297,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -308,7 +309,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -320,7 +321,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -332,7 +333,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -344,7 +345,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -356,7 +357,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -368,7 +369,7 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -380,7 +381,144 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.PopupInfo + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Location Type: ' + feature.properties.poi_type);
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                });
+            }
+        });
+		var districtFourteen = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "14";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                });
+            }
+        });
+		var districtFifteen = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "15";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                });
+            }
+        });
+		var districtSixteen = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "16";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                });
+            }
+        });
+		var districtSeventeen = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "17";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                });
+            }
+        });
+		var districtEighteen = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "18";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>'  + 'Incident ID: '+ feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                });
+            }
+        });
+		var districtNineteen = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "19";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                });
+            }
+        });
+		var districtTwenty = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.A_District == "20";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+					icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                });
+            }
+        });
+		// ------------------------- END OF DISTRICTS ---------------------------- //
+		// ------------------------- START OF INCIDENTS -------------------------- //
+		var battery = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.IncdntType == "Battery";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                });
+            }
+        });
+		var damagedProperty = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.IncdntType == "Damaged Property";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                });
+            }
+        });
+		
+		// ------------------------- END OF INCIDENTS ---------------------------- //
+		// ------------------------- START OF ARRESTED -------------------------- //
+		var yesArrest = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Arrest == "Yes";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                });
+            }
+        });
+		var noArrest = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Arrest == "No";
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -398,10 +536,19 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 			clusters.addLayer(districtNine)
 			clusters.addLayer(districtTen)
 			clusters.addLayer(districtEleven)
+			clusters.addLayer(districtTwelve)
+			clusters.addLayer(districtThirteen)
+			clusters.addLayer(districtFourteen)
+			clusters.addLayer(districtFifteen)
+			clusters.addLayer(districtSixteen)
+			clusters.addLayer(districtSeventeen)
+			clusters.addLayer(districtEighteen)
+			clusters.addLayer(districtNineteen)
+			clusters.addLayer(districtTwenty)
 		
 		$("#districtList li").click(function(e) {
 			switch (e.target.text) {
-			  case "All Crimes":
+			  case "Show All Crimes":
 				clusters.addLayer(districtNone)
 				clusters.addLayer(districtOne)
 				clusters.addLayer(districtTwo)
@@ -414,6 +561,44 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.addLayer(districtNine)
 				clusters.addLayer(districtTen)
 				clusters.addLayer(districtEleven)
+				clusters.addLayer(districtTwelve)
+				clusters.addLayer(districtThirteen)
+				clusters.addLayer(districtFourteen)
+				clusters.addLayer(districtFifteen)
+				clusters.addLayer(districtSixteen)
+				clusters.addLayer(districtSeventeen)
+				clusters.addLayer(districtEighteen)
+				clusters.addLayer(districtNineteen)
+				clusters.addLayer(districtTwenty)
+				
+				clusters.removeLayer(yesArrest)
+				clusters.removeLayer(noArrest)
+				break;
+				case "Remove All Crimes":
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
+				
+				clusters.removeLayer(yesArrest)
+				clusters.removeLayer(noArrest)
 				break;
 			  case "Not in District":
 				clusters.addLayer(districtNone)
@@ -428,6 +613,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 1":
 				clusters.addLayer(districtOne)
@@ -442,6 +636,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 2":
 				clusters.addLayer(districtTwo)
@@ -456,6 +659,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 3":
 				clusters.addLayer(districtThree)
@@ -470,6 +682,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 4":
 				clusters.addLayer(districtFour)
@@ -484,6 +705,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 5":
 				clusters.addLayer(districtFive)
@@ -498,6 +728,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 6":
 				clusters.addLayer(districtSix)
@@ -512,6 +751,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 7":
 				clusters.addLayer(districtSeven)
@@ -526,6 +774,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 8":
 			    clusters.addLayer(districtEight)
@@ -540,6 +797,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 9":
 			    clusters.addLayer(districtNine)
@@ -554,6 +820,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtEight)
 				clusters.removeLayer(districtTen)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 10":
 			    clusters.addLayer(districtTen)
@@ -568,6 +843,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtEight)
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 11":
 			    clusters.addLayer(districtEleven)
@@ -582,6 +866,15 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtEight)
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 12":
 			    clusters.addLayer(districtTwelve)
@@ -597,23 +890,436 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 				clusters.removeLayer(districtNine)
 				clusters.removeLayer(districtTen)
 				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 13":
 			    clusters.addLayer(districtThirteen)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 14":
+				clusters.addLayer(districtFourteen)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 15":
+				clusters.addLayer(districtFifteen)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 16":
+				clusters.addLayer(districtSixteen)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 17":
+				clusters.addLayer(districtSeventeen)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 18":
+				clusters.addLayer(districtEighteen)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 19":
+				clusters.addLayer(districtNineteen)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			  case "District 20":
+				clusters.addLayer(districtTwenty)
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				break;
+			}
+			if ($(".navbar-collapse.in").length > 0) {
+			  $(".navbar-toggle").click();
+			}
+		  });
+		  
+		  $("#incidentList li").click(function(e) {
+			switch (e.target.text) {
+			  case "Show All Incidents":
+				clusters.addLayer(battery)
+				clusters.addLayer(damagedProperty)
+				
+				clusters.removeLayer(yesArrest)
+				clusters.removeLayer(noArrest)
+				
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
+				break;
+			  case "Remove All Incidents":
+				clusters.removeLayer(battery)
+				clusters.removeLayer(damagedProperty)
+				
+				clusters.removeLayer(yesArrest)
+				clusters.removeLayer(noArrest)
+				
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
+				break;
+			  case "Accidents":
+				
+				break;
+			  case "Attempted Homicide":
+				
+				break;
+			  case "Battery":
+				clusters.addLayer(battery)
+				clusters.removeLayer(damagedProperty)
+				
+				
+				break;
+			  case "Damaged Property":
+				clusters.addLayer(damagedProperty)
+				clusters.removeLayer(battery)
+				
+				
+				break;
+			  case "Disturbance":
+				
+				break;
+			  case "Drug Investigation":
+				
+				break;
+			  case "Fraud":
+				
+				break;
+			  case "Intoxicated Driver":
+				
+				break;
+			  case "Murder/Homicide":
+			    
+				break;
+			  case "Non-Residential/Residential Burglary":
+			    
+				break;
+			  case "Robbery":
+			    
+				break;
+			  case "Sexual Assault":
+			    
+				break;
+			  case "Traffic Incident":
+			    
+				break;
+			  case "Weapons Violation":
+			    
+				break;
+			}
+			if ($(".navbar-collapse.in").length > 0) {
+			  $(".navbar-toggle").click();
+			}
+		  });
+		  
+		  $("#arrestedList li").click(function(e) {
+			switch (e.target.text) {
+			  case "Show All Crimes":
+				clusters.addLayer(yesArrest)
+				clusters.addLayer(noArrest)
+				
+				clusters.removeLayer(battery)
+				clusters.removeLayer(damagedProperty)
+				
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
+				break;
+			  case "Remove All Crimes":
+				clusters.removeLayer(yesArrest)
+				clusters.removeLayer(noArrest)
+				
+				clusters.removeLayer(battery)
+				clusters.removeLayer(damagedProperty)
+				
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
+				break;
+			  case "Yes":
+				clusters.addLayer(yesArrest)
+				clusters.removeLayer(noArrest)
+				
+				clusters.removeLayer(battery)
+				clusters.removeLayer(damagedProperty)
+				
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
+				break;
+			  case "No":
+				clusters.addLayer(noArrest)
+				clusters.removeLayer(yesArrest)
+				
+				clusters.removeLayer(battery)
+				clusters.removeLayer(damagedProperty)
+				
+				clusters.removeLayer(districtNone)
+				clusters.removeLayer(districtOne)
+				clusters.removeLayer(districtTwo)
+				clusters.removeLayer(districtThree)
+				clusters.removeLayer(districtFour)
+				clusters.removeLayer(districtFive)
+				clusters.removeLayer(districtSix)
+				clusters.removeLayer(districtSeven)
+				clusters.removeLayer(districtEight)
+				clusters.removeLayer(districtNine)
+				clusters.removeLayer(districtTen)
+				clusters.removeLayer(districtEleven)
+				clusters.removeLayer(districtTwelve)
+				clusters.removeLayer(districtThirteen)
+				clusters.removeLayer(districtFourteen)
+				clusters.removeLayer(districtFifteen)
+				clusters.removeLayer(districtSixteen)
+				clusters.removeLayer(districtSeventeen)
+				clusters.removeLayer(districtEighteen)
+				clusters.removeLayer(districtNineteen)
+				clusters.removeLayer(districtTwenty)
 				break;
 			}
 			if ($(".navbar-collapse.in").length > 0) {
@@ -628,13 +1334,14 @@ $.getJSON("data/2013_cl2.geojson",function(crimeData){
 
 
 $.getJSON("data/Police_Stations.geojson",function(psData){
-    var blueIcon = L.icon({
-      iconUrl: 'data/blue.png',
-      iconSize: [30,30]
+    var policeIcon = L.AwesomeMarkers.icon({
+        prefix: 'fa', //font awesome rather than bootstrap
+        markerColor: 'blue', // see colors above
+        icon: 'star' //http://fortawesome.github.io/Font-Awesome/icons/
     });
     var polStations = L.geoJson(psData,{
       pointToLayer: function(feature,latlng){
-        var marker = L.marker(latlng,{icon: blueIcon});
+        var marker = L.marker(latlng,{icon: policeIcon});
         marker.bindPopup('<strong>'+feature.properties.LONG_NAME.toUpperCase() + '</strong>' + '<br/>' + feature.properties.ADDRESS
 		+ '<br/>' + 'Location Type: ' + feature.properties.poi_type);
         return marker;

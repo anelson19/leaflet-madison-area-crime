@@ -1,7 +1,9 @@
 #map {
 	margin-top: 2.8%;
-	height: 90%; 
-	width: 60%;
+	height: 93%; 
+	width: 66%;
+	top: 0;
+	bottom: 0;
 }
 .marker-cluster-small {
 	background-color: rgba(181, 226, 140, 0.6);
@@ -126,7 +128,7 @@ button {
 	margin-left: 100px;
 	
 }
-div .dropdown #basemapList{
+div .dropdown #districtList{
 	padding-left: 5px;
 	padding-right: 5px;
 }
@@ -175,4 +177,83 @@ hr {
   margin-top: 40px;
   margin-bottom: 40px;
 }
+#side-panel h1 {
+	padding: 8px 15px 8px 15px;
+	margin: 0;
+	background: #3F3250;
+	width: 100%;
+	font-family: Helvetica;
+	font-weight: 350;
+	font-size: 1.5em;
+	text-align: center;
+	color: white;
+}
+#side-panel h2 {
+	margin: 0;
+	padding: 8px 15px 8px 15px;
+	color: #3F3250;
+	font-family: Helvetica;
+	font-weight: 500;
+	font-size: 1.1em;
+	text-align: center;
+}
+#side-panel h4 {
+	padding: 8px 15px 8px 15px;
+	margin: 0;
+	background: #3F3250;
+	width: 100%;
+	font-family: Helvetica;
+	font-weight: 250;
+	font-size: 1.1em;
+	text-align: center;
+	color: white;
+	border-bottom: 10px solid #1E90FF;
+}
+#side-panel {
+	position: absolute;
+	margin-top: 2.8%;
+	left: 66%;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	width: 33%;
+	background: #DCDCDC;
+	border-left: 2px solid #1E90FF;
+	overflow-y: scroll;
+}
+#side-panel p {
+	margin: 8px 0 4px; 
+	padding: 0 25px 0 15px;
+	color: #22252C;
+	text-align: left;
+	font-size: .9em; 
+	line-height: 1.3em;
+}
+#side-panel p:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+#side-panel img {
+	float: center;
+	width: 100%;
+}
+#crime-incident-list {
+	color: #22252C;
+	font-size: .75em;
+	columns: 2; 
+	list-style-type: square;
+	list-style-position: inside;
+	padding-left: 15px;
+}
 
+#ui-controls .min {
+	float: left;   
+}
+#ui-controls .max {
+	float: right;
+	margin-right: -15px;
+}
+.year-slider {
+	width: 100%;
+}
