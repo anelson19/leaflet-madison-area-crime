@@ -11,6 +11,19 @@
 //JQuery Dropdown examplehttp://esri.github.io/bootstrap-map-js/demo/jquery/maps.html#
 //https://gis.stackexchange.com/questions/129891/javascript-arcgis-dropdown-menu-with-layers?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa
 //https://www.youtube.com/watch?v=PnUWcPQnZw4
+
+$(document).ready(function(){
+  $('.dropdown-submenu a.month').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+  $('.dropdown-submenu a.time').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
 				
 		
 var osmLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>',
@@ -60,7 +73,7 @@ info.onAdd = function (map) {
 // method that we will use to update the control based on feature properties passed
 info.update = function (props) {
     this._div.innerHTML = '<h4>Madison Area, WI Crime</h4>' +  (props ?
-        '<b>' + 'District ' + props.ALD_DIST + '</b><br />' + props.OBJECTID + ''
+        '<b>' + 'District ' + props.Districts + '</b><br />' + 'Number of crimes committed: ' + '<b>' + props.crimes17 + '</b>' + ''
         : 'Hover over a district, city or village');
 };
 
@@ -73,11 +86,11 @@ info.update_t = function (props) {
 info.addTo(map);
 
 function getColor(d) {
-    return d > 320  ? '#006837' :
-           d > 240  ? '#31a354' :
-           d > 160   ? '#78c679' :
-           d > 80   ? '#c2e699' :
-           d > 0   ? '#ffffcc' :
+    return d > 80  ? '#08519c' :
+           d > 60  ? '#3182bd' :
+           d > 40   ? '#6baed6' :
+           d > 20   ? '#bdd7e7' :
+           d > 0   ? '#eff3ff' :
                       '#f7f7f7';
 }
 
@@ -145,16 +158,16 @@ function onEachFeature(feature, layer) {
 	});
 }
 
-$.getJSON("data/Aldermanic_Districts.geojson",function(districtData){
+$.getJSON("data/Aldermanic_Districts3.geojson",function(districtData){
 geojson = L.geoJson( districtData, {
   style: function(feature){
 	var fillColor,
-		district = feature.properties.ALD_DIST;
-	if ( district > 80 ) fillColor = "#006837";
-	else if ( district > 40 ) fillColor = "#31a354";
-	else if ( district > 20 ) fillColor = "#78c679";
-	else if ( district > 10 ) fillColor = "#c2e699";
-	else if ( district > 0 ) fillColor = "#ffffcc";
+		district = feature.properties.crimes17;
+	if ( district > 80 ) fillColor = "#08519c";
+	else if ( district > 60 ) fillColor = "#3182bd";
+	else if ( district > 40 ) fillColor = "#6baed6";
+	else if ( district > 20 ) fillColor = "#bdd7e7";
+	else if ( district > 0 ) fillColor = "#eff3ff";
 	else fillColor = "#f7f7f7";  // no data
 	return { color: "#999", weight: 1, fillColor: fillColor, fillOpacity: .6 };
   },
@@ -177,11 +190,11 @@ townMA = L.geoJson( townData, {
   style: function(feature){
 	var fillColor,
 		town = feature.properties.CRIME_IDX;
-	if ( town > 320 ) fillColor = "#006837";
-	else if ( town > 240 ) fillColor = "#31a354";
-	else if ( town > 160 ) fillColor = "#78c679";
-	else if ( town > 80 ) fillColor = "#c2e699";
-	else if ( town > 0 ) fillColor = "#ffffcc";
+	if ( town > 320 ) fillColor = "#08519c";
+	else if ( town > 240 ) fillColor = "#3182bd";
+	else if ( town > 160 ) fillColor = "#6baed6";
+	else if ( town > 80 ) fillColor = "#bdd7e7";
+	else if ( town > 0 ) fillColor = "#eff3ff";
 	else fillColor = "#f7f7f7";  // no data
 	return { color: "#999", weight: 2, fillColor: fillColor, fillOpacity: .6 };
   },
@@ -201,7 +214,7 @@ townMA = L.geoJson( townData, {
 });
 
 
-$.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
+$.getJSON("data/convertcsv-(3).json",function(crimeData){
 	var crimeIcon = L.AwesomeMarkers.icon({
         prefix: 'fa', //font awesome rather than bootstrap
         markerColor: 'red', // see colors above
@@ -211,12 +224,14 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
 	/* var crimes = L.geoJson(crimeData,{
 	  pointToLayer: function(feature,latlng){
 		var marker = L.marker(latlng,{icon: crimeIcon});
-		marker.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' 
+		marker.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' 
 		+ 'Location Type: ' + feature.properties.poi_type);
 		return marker;
 	  }
 	}); */
 	var crimes = L.geoJson(crimeData);
+	
+	
         var districtNone = L.geoJson(crimeData, {
             filter: function(feature, layer) {
                 return feature.properties.A_District == "None";
@@ -225,7 +240,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
                     icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -237,7 +252,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -249,7 +264,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -261,7 +276,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -273,7 +288,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -285,7 +300,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -297,7 +312,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -309,7 +324,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -321,7 +336,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -333,7 +348,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -345,7 +360,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -357,7 +372,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -369,7 +384,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -381,7 +396,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -393,7 +408,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -405,7 +420,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -417,7 +432,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -429,7 +444,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -441,7 +456,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>'  + 'Incident ID: '+ feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>'  + 'Incident ID: '+ feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -453,7 +468,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -465,7 +480,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -479,7 +494,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
                     icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -491,7 +506,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
                     icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -506,7 +521,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
                     icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -518,7 +533,7 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
                 return L.marker(latlng, {
                     icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.Name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Location Type: ' + feature.properties.poi_type + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
                 });
             }
         });
@@ -1326,13 +1341,13 @@ $.getJSON("data/2013_cl_mod1.geojson",function(crimeData){
 			  $(".navbar-toggle").click();
 			}
 		  });
-		
+	  
 		map.addLayer(clusters);
+		
+
 	
 	/* var overlaysObj = { 'All points': clusters.addTo(map) }
 	L.control.layers({collapsed: false}, overlaysObj).addTo(map); */
-
-
 $.getJSON("data/Police_Stations.geojson",function(psData){
     var policeIcon = L.AwesomeMarkers.icon({
         prefix: 'fa', //font awesome rather than bootstrap
@@ -1358,13 +1373,14 @@ $.getJSON("data/Police_Stations.geojson",function(psData){
 });
 });
 
+
 var legend = L.control({position: 'bottomright'});
 
 legend.onAdd = function (map) {
 
 	var div = L.DomUtil.create('div', 'info legend'),
-		grades = [0, 80, 160, 240, 320],
-		labels = [],
+		grades = [0, 20, 40, 60, 80],
+		labels = ['<strong> Number of Crimes </strong>'],
 		from, to;
 
 	for (var i = 0; i < grades.length; i++) {

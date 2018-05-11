@@ -6,24 +6,24 @@
 	bottom: 0;
 }
 .marker-cluster-small {
-	background-color: rgba(181, 226, 140, 0.6);
+	background-color: #fee5d9;
 	}
 .marker-cluster-small div {
-	background-color: rgba(110, 204, 57, 0.6);
+	background-color: #fcbba1;
 	}
 
 .marker-cluster-medium {
-	background-color: rgba(241, 211, 87, 0.6);
+	background-color: #fc9272;
 	}
 .marker-cluster-medium div {
-	background-color: rgba(240, 194, 12, 0.6);
+	background-color: #fb6a4a;
 	}
 
 .marker-cluster-large {
-	background-color: rgba(253, 156, 115, 0.6);
+	background-color: #CD5555;
 	}
 .marker-cluster-large div {
-	background-color: rgba(241, 128, 23, 0.6);
+	background-color: #cb181d;
 	}
 
 	/* IE 6-8 fallback colors */
@@ -254,6 +254,32 @@ hr {
 	float: right;
 	margin-right: -15px;
 }
-.year-slider {
+.month-slider {
 	width: 100%;
 }
+#ui-controls {
+	background-color: white;
+	padding: 10px;
+	opacity: 0.8;
+	border-radius: 10px;
+}
+
+.dropdown-submenu {
+    position: relative;
+}
+.dropdown-submenu .dropdown-menu{
+	visibility: hidden;
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+	transition-delay: 0s;
+}
+.dropdown-submenu:hover .dropdown-menu{
+	visibility: visible;
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+	transition-delay: 0s;
+}
+
+

@@ -1,6 +1,7 @@
 <html>
 <head>
-  <title>Madison Area CrimeMapper 2013-2017</title>
+  <title>Madison Area CrimeMapper 2017</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css"/>
   <link rel="stylesheet" href="MarkerCluster.css" />
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
@@ -10,6 +11,7 @@
   <link rel="stylesheet" href="lib/leaflet_awesome_markers.css">
   <link rel="stylesheet" href="lib/leaflet.awesome-markers/dist/leaflet.awesome-markers.css">
   <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/1.5.2/css/ionicons.min.css">
+  
   
   <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
   <script src="lib/leaflet-markercluster.js"></script>
@@ -103,6 +105,44 @@
 						<li><a href="#">No</a></li>
                     </ul>
                 </li>
+				<li id="TimeList">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Time <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+						 <li class="dropdown-submenu">
+							<a class="month" tabindex="-1" href="#">Month <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+							  <li><a tabindex="-1" href="#">Show All Months</a></li>
+							  <li><a tabindex="-1" href="#">Remove All Months</a></li>
+							  <li class="divider"></li>
+							  <li><a tabindex="-1" href="#">January</a></li>
+							  <li><a tabindex="-1" href="#">February</a></li>
+							  <li><a tabindex="-1" href="#">March</a></li>
+							  <li><a tabindex="-1" href="#">April</a></li>
+							  <li><a tabindex="-1" href="#">May</a></li>
+							  <li><a tabindex="-1" href="#">June</a></li>
+							  <li><a tabindex="-1" href="#">July</a></li>
+							  <li><a tabindex="-1" href="#">August</a></li>
+							  <li><a tabindex="-1" href="#">September</a></li>
+							  <li><a tabindex="-1" href="#">October</a></li>
+							  <li><a tabindex="-1" href="#">November</a></li>
+							  <li><a tabindex="-1" href="#">December</a></li>
+							</ul>
+						 </li>
+						 <li class="dropdown-submenu">
+							<a class="time" tabindex="-1" href="#">Time of Day <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+							  <li><a tabindex="-1" href="#">Show All Times</a></li>
+							  <li><a tabindex="-1" href="#">Remove All Times</a></li>
+							  <li class="divider"></li>
+							  <li><a tabindex="-1" href="#">00:00:00 - 06:00:00</a></li>
+							  <li><a tabindex="-1" href="#">06:00:00 - 12:00:00</a></li>
+							  <li><a tabindex="-1" href="#">12:00:00 - 18:00:00</a></li>
+							  <li><a tabindex="-1" href="#">18:00:00 - 24:00:00</a></li>
+							</ul>
+						 </li>
+                    </ul>
+                </li>
+				
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -240,7 +280,7 @@
   
   <div id='side-panel'>
     <h1><b>Madison Area Crime Map</b></h1>
-    <h4><b>2013-2017 Police Incident Reports</b></h4>
+    <h4><b>2017 Police Incident Reports</b></h4>
     <h2><b>Reading this Map</b></h2>
         <p>This map displays crime locations between the years of 2013 and 2017. The goal of this map is to allow for users to explore crimes based on general area (specifically by Aldermanic Districts), incident type, if an arrest was made, and by time of occurrence (year, month, day, hour). Users may also explore surrounding cities and villages and compare crime statistics. </p>
     <h2><b>Aldermanic Districts</b></h2>
@@ -265,25 +305,11 @@
             <li>Weapons Violation</li>
         </ul>
 		<h2><b>Crime Index</b></h2>
-        <p>The Monthly Agriculture Insurance Calendar (MAgIC) was created by GlobalAgRisk, Inc. as a food security tool for developing nations.</p>
-        <p>Crops were in part chosen based on data availability. To try to keep our focus on small subsistence farming, the 25 crops were filtered as low-input and rain-fed (rather than irrigated).</p>
-        <p>For each of the above crops, we created a baseline crop calendar that defines various stages of plant development throughout the year for each administrative unit in Ethiopia. These crop calendars were created by projecting different stages of crop development from planting season start days. Each stage of crop development (initial stage, development stage, mid-season stage, and late stage) corresponds to a <i>yield response factor</i>, which is an FAO measure that represents how a reduction in water impacts yield losses. A higher yield response factor corresponds to a higher drought exposure. The resultant calendars show a relative measure of drought exposure for each of the 25 crops within an administrative unit. These calendars were combined and weighted with raw crop production values and subsequently normalized to yield the final Monthly Agriculture Insurance Calendar. </p>
-        <p>MAgIC clearly shows the distribution of drought exposure in Ethiopia. Winter and spring months (approximately November-March) have the least drought exposure, whereas summer and autumn are much more prone to drought. While MAgIC can be displayed graphically, as it is below, mapping drought exposure is important to ascertain its <b>spatial distribution</b>. Click the graphical image to enlarge.</p>
-        <p><a href = "http://i.imgur.com/bI0pMCM.png"><img src="images/eth-cc.png" alt="legend"></a></p>
-    <h2><b>About the data</b></h2>
-        <p>Data for crop start days were developed and provided by <a href = "http://gaez.fao.org/Main.html?ticket=ST-96803-5jRRY5f76WfbfJSJ6hXj-cas#">Global Agro-Ecological Zones (GAEZ)</a> under the Food and Agriculture Organization (FAO) and the International Institute for Applied Systems Analysis (IIASA). Crop Production data were gathered and provided by <a href = "http://www.earthstat.org/data-download/">EarthStat</a> from the University of Minnesota Institute on the Environment. Crop stage/yield response factor data were also provided by FAO, as well as Heinemann, et. al. (2009). </p> 
-        <p>Rice Growth Stages: Heinemann, A.B.; Stone, L.F.; Silva, S.C. da. Arroz. In: Monteiro, J.E.B.A. (Ed.). Agrometeorologia dos cultivos: o fator meteorológico na produção agrícola. Brasília: Instituto Nacional de Meteorologia, 2009. p.63‑79.
-        <p>Other Crop Growth Stages: Brouwer, C. and M. Heibloem, Irrigation Water Management Training Manual no. 3: Irrigation Water Needs (Rome: Food and Agricultural Organization, 1986), available from http://www.fao.org/docrep/s2022e/s2022e07.htm#chapter 3: crop water needs</p>
-        <p>Yield Response to Water: Doorenbos, J., and A. H. Kassam. "Yield response to water." Irrigation and drainage paper 33 (Rome: FAO, 1979), available from http://203.200.22.249:8080/jspui/bitstream/2014/11987/1/
-            Yield_response_to_water.pdf.</p>
-        <p>Monthly Agriculture Insurance Calendar: Developed by GlobalAgRisk, Inc. with James Allen, Nathan Arnold, Jason Hartell, Jerzy Jaromczyk, Lauren Oldham, and Jerry Skees.</p>
-        <p>Map authored by <a href = "http://laurenoldham1202.github.io/">Lauren Oldham</a>, June 2016.</p>
-    </div>
-	
-	<div id ='ui-controls'>
-        <label><span class="min">January</span>
-            <span class="max">December</span></label>
-        <input type = 'range' min = '1' max = '12' value = '1', step = '1' class = 'year-slider'> 
+        <p><i>Definition:</i> crime index is a calculation that describes the number of crimes that are reported to a law enforcement agency per 100,000 people</p>
+		<p><i>Calculation:</i> Number of reported crimes divided by the total population, which is then multiplied by 100,000</p>
+    <h2><b>Sources</b></h2>
+        <p><a target="_blank" href = "https://oag.ca.gov/sites/all/files/agweb/pdfs/cjsc/prof10/formulas.pdf">Crime Rate (Crime Index)</a> </p> 
+        <p>Map authored by <a target="_blank" href = "https://github.com/anelson19">Alex Nelson</a>, May 2018.</p>
     </div>
   
   <script src="lib/leaflet/leaflet.css" type="text/javascript"></script>
@@ -292,6 +318,7 @@
 	  <script src="lib/leaflet.zoomhome-master/dist/leaflet.zoomhome.min.js" type="text/javascript"></script>
   
  <script type="text/javascript" src="js/main.js"></script>
+ <script src="https://rawgit.com/dwilhelm89/LeafletSlider/master/SliderControl.js" type="text/javascript"></script>
 
 </body>
 </html>
