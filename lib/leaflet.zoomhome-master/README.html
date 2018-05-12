@@ -1,0 +1,75 @@
+<html>
+      <head>
+        <meta charset="UTF-8">
+        <title>README.md</title>
+      </head>
+      <body>
+        <h1 id="leaflet-zoomhome">Leaflet.zoomhome</h1>
+<p><a href="https://travis-ci.org/torfsen/leaflet.zoomhome"><img src="https://api.travis-ci.org/torfsen/leaflet.zoomhome.svg?branch=master" alt="Travis CI badge"></a></p>
+<p>A <a href="http://leafletjs.com/">Leaflet</a>-plugin that provides a zoom control with a
+&quot;Home&quot; button to reset the view.</p>
+<p><a href="https://torfsen.github.io/leaflet.zoomhome/">Demo</a></p>
+<h2 id="usage">Usage</h2>
+<p>Supported Leaflet versions are 0.7.x and later.</p>
+<p>This plugin requires <a href="https://fortawesome.github.io/Font-Awesome/">Font-Awesome</a>:</p>
+<pre><code class="lang-xml">&lt;link rel=&quot;stylesheet&quot; href=&quot;http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css&quot;/&gt;
+</code></pre>
+<p>Copy <code>Leaflet.zoomhome.min.js</code> and <code>Leaflet.zoomhome.css</code> from the <code>dist</code> folder to
+your project folder and include them in your HTML (you need to include Leaflet before
+including the plugin):</p>
+<pre><code class="lang-xml">&lt;link rel=&quot;stylesheet&quot; href=&quot;leaflet.zoomhome.css&quot;/&gt;
+&lt;script src=&quot;leaflet.zoomhome.min.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+<p>Alternatively, you can install the plugin via <a href="http://bower.io">Bower</a>:</p>
+<pre><code>bower install leaflet.zoomhome --save
+</code></pre><p>When you create your map, pass <code>{zoomControl: false}</code> to disable the standard
+zoom control:</p>
+<pre><code class="lang-js">var map = L.map(&#39;map&#39;, {zoomControl: false});
+</code></pre>
+<p>Then create the zoomhome-control and add it to the map:</p>
+<pre><code class="lang-js">var zoomHome = L.Control.zoomHome();
+zoomHome.addTo(map);
+</code></pre>
+<h2 id="options">Options</h2>
+<p>You can pass additional options when you create the control:</p>
+<pre><code class="lang-js">var zoomHome = L.Control.zoomHome({position: &#39;topright&#39;});
+</code></pre>
+<p>In addition to the <a href="http://leafletjs.com/reference.html#control-zoom">options supported by the standard zoom control</a>,
+the zoomhome-control supports the following options:</p>
+<p><code>zoomHomeIcon</code>: Font-Awesome icon name for the home button (default: <code>&#39;home&#39;</code>).</p>
+<p><code>zoomHomeTitle</code>: Tooltip-text of the home button (default: <code>&#39;Home&#39;</code>).</p>
+<p><code>homeCoordinates</code>: Coordinates on which the map is centered when the home button
+is pressed (default: the location which the map displayed when the control was
+added to the map).</p>
+<p><code>homeZoom</code>: The zoom level to which the map zooms when the home button is pressed
+(default: the zoom level that was active when the control was added to the map).</p>
+<h2 id="changing-the-home-view">Changing the Home View</h2>
+<p>You can change the home view after the control has been created using the
+following functions.</p>
+<p><code>zoomHome.setHomeCoordinates(coordinates)</code>: If <code>coordinates</code> are given then
+they define the new home coordinates. If no coordinates are given then the
+current map center becomes the new home location. The home zoom level is not
+changed.</p>
+<p><code>zoomHome.setHomeZoom(zoom)</code>: If <code>zoom</code> is given then it defines the new home
+zoom. If no zoom is given then the current map zoom becomes the new home zoom.
+The home coordinates are not changed.</p>
+<p><code>zoomHome.setHomeBounds(bounds)</code>: If <code>bounds</code> are given then they define the
+new home view (both zoom and center). If they are not given, the current map
+bounds become the new home.</p>
+<h2 id="inspecting-the-home-view">Inspecting the Home View</h2>
+<p>You can get the home coordinates and zoom using the
+<code>zoomHome.getHomeCoordinates()</code> and <code>zoomHome.getHomeZoom()</code> functions,
+respectively.</p>
+<h2 id="change-log">Change Log</h2>
+<p>See the file <a href="CHANGELOG.md">CHANGELOG.md</a>.</p>
+<h2 id="license">License</h2>
+<p>Based on <a href="https://gis.stackexchange.com/a/127383/48264">code by toms</a> and
+licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA 3.0</a>.</p>
+<h2 id="development">Development</h2>
+<p>Install all requirements using <code>npm install</code>.</p>
+<p>The tests can be run via <code>grunt test</code> (test against the currently installed Leaflet version) or via <code>grunt test-all</code> (test against all supported Leaflet versions).</p>
+<p>Linting can be done via <code>grunt jshint</code>, and <code>grunt uglify</code> updates the minified JS file.</p>
+<p><code>grunt</code> on its own is equivalent to running the <code>jshint</code>, <code>test-all</code> and <code>uglify</code> tasks.</p>
+
+      </body>
+    </html>

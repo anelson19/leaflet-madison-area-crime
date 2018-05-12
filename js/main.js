@@ -214,7 +214,7 @@ townMA = L.geoJson( townData, {
 });
 
 
-$.getJSON("data/convertcsv-(3).json",function(crimeData){
+$.getJSON("data/2017_crimes_cl2.geojson",function(crimeData){
 	var crimeIcon = L.AwesomeMarkers.icon({
         prefix: 'fa', //font awesome rather than bootstrap
         markerColor: 'red', // see colors above
@@ -240,7 +240,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
                     icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -252,7 +252,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType+ '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -264,7 +264,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType+ '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -276,7 +276,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType+ '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -288,7 +288,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType+ '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -300,7 +300,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType+ '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -312,7 +312,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType+ '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -324,7 +324,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType+ '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -336,7 +336,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType+ '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -348,7 +348,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -360,7 +360,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -372,7 +372,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -384,7 +384,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -396,7 +396,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -408,7 +408,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -420,7 +420,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -432,7 +432,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -444,7 +444,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -456,7 +456,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>'  + 'Incident ID: '+ feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>'  + 'Incident ID: '+ feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -468,7 +468,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -480,7 +480,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
 					icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -494,7 +494,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
                     icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -506,7 +506,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
                     icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -521,7 +521,7 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
                     icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
@@ -533,10 +533,207 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
                 return L.marker(latlng, {
                     icon: crimeIcon
                 }).on('mouseover', function() {
-                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType);
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
                 });
             }
         });
+		// ------------------------- END OF ARRESTED -------------------------- //
+		// -------------------------- START OF MONTH --------------------------- //
+		var january = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 1;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var february = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 2;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var march = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 3;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var april = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 4;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var may = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 5;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var june = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 6;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var july = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 7;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var august = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 8;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var september = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 9;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var october = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 10;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var november = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 11;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var december = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.Month == 12;
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		// --------------------------- END OF MONTH --------------------------- //
+		// -------------------------START OF TIME FRAME ----------------------- //
+		var midSix = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.TimeFrame == '00:00:00 - 06:00:00';
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var sixNoon = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.TimeFrame == '06:00:00 - 12:00:00';
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var noonSixPM = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.TimeFrame == '12:00:00 - 18:00:00';
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		var sixpmMid = L.geoJson(crimeData, {
+            filter: function(feature, layer) {
+                return feature.properties.TimeFrame == '18:00:00 - 24:00:00';
+            },
+            pointToLayer: function(feature, latlng) {
+                return L.marker(latlng, {
+                    icon: crimeIcon
+                }).on('mouseover', function() {
+                    this.bindPopup('<strong>' + feature.properties.name.toUpperCase() + '</strong>' + '<br/>' + 'Incident ID: ' + feature.properties.IncidentID + '<br/>' + 'District: ' + feature.properties.A_District + '<br/>' + 'Case Number: ' + feature.properties.CaseNum + '<br/>' + 'Date: ' + feature.properties.Date + '<br/>' + 'Time: ' + feature.properties.Time + '<br/>' + 'Incident Type: ' + feature.properties.IncdntType + '<br/>' + 'Time Frame: ' + feature.properties.TimeFrame);
+                });
+            }
+        });
+		// --------------------------END OF TIME FRAME ----------------------- //
 		
 		var clusters = L.markerClusterGroup();
 			clusters.addLayer(districtNone)
@@ -1341,6 +1538,246 @@ $.getJSON("data/convertcsv-(3).json",function(crimeData){
 			  $(".navbar-toggle").click();
 			}
 		  });
+		  
+		  $("#timeList li").click(function(e) {
+			switch (e.target.text) {
+			  case "Show All Months":
+				clusters.addLayer(january)
+				clusters.addLayer(february)
+				clusters.addLayer(march)
+				clusters.addLayer(april)
+				clusters.addLayer(may)
+				clusters.addLayer(june)
+				clusters.addLayer(july)
+				clusters.addLayer(august)
+				clusters.addLayer(september)
+				clusters.addLayer(october)
+				clusters.addLayer(november)
+				clusters.addLayer(december)
+				break;
+			  case "Remove All Months":
+				clusters.removeLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(march)
+				clusters.removeLayer(april)
+				clusters.removeLayer(may)
+				clusters.removeLayer(june)
+				clusters.removeLayer(july)
+				clusters.removeLayer(august)
+				clusters.removeLayer(september)
+				clusters.removeLayer(october)
+				clusters.removeLayer(november)
+				clusters.removeLayer(december)
+				break;
+			  case "January":
+			    clusters.addLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(march)
+				clusters.removeLayer(april)
+				clusters.removeLayer(may)
+				clusters.removeLayer(june)
+				clusters.removeLayer(july)
+				clusters.removeLayer(august)
+				clusters.removeLayer(september)
+				clusters.removeLayer(october)
+				clusters.removeLayer(november)
+				clusters.removeLayer(december)
+				break;
+			  case "February":
+			    clusters.addLayer(february)
+				clusters.removeLayer(january)
+				clusters.removeLayer(march)
+				clusters.removeLayer(april)
+				clusters.removeLayer(may)
+				clusters.removeLayer(june)
+				clusters.removeLayer(july)
+				clusters.removeLayer(august)
+				clusters.removeLayer(september)
+				clusters.removeLayer(october)
+				clusters.removeLayer(november)
+				clusters.removeLayer(december)
+				break;
+			  case "March":
+				clusters.addLayer(march)
+				clusters.removeLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(april)
+				clusters.removeLayer(may)
+				clusters.removeLayer(june)
+				clusters.removeLayer(july)
+				clusters.removeLayer(august)
+				clusters.removeLayer(september)
+				clusters.removeLayer(october)
+				clusters.removeLayer(november)
+				clusters.removeLayer(december)
+				break;
+			  case "April":
+			    clusters.addLayer(april)
+				clusters.removeLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(march)
+				clusters.removeLayer(may)
+				clusters.removeLayer(june)
+				clusters.removeLayer(july)
+				clusters.removeLayer(august)
+				clusters.removeLayer(september)
+				clusters.removeLayer(october)
+				clusters.removeLayer(november)
+				clusters.removeLayer(december)
+				break;
+			  case "May":
+			    clusters.addLayer(may)
+				clusters.removeLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(march)
+				clusters.removeLayer(april)
+				clusters.removeLayer(june)
+				clusters.removeLayer(july)
+				clusters.removeLayer(august)
+				clusters.removeLayer(september)
+				clusters.removeLayer(october)
+				clusters.removeLayer(november)
+				clusters.removeLayer(december)
+				break;
+			  case "June":
+			    clusters.addLayer(june)
+			    clusters.removeLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(march)
+				clusters.removeLayer(april)
+				clusters.removeLayer(may)
+				clusters.removeLayer(july)
+				clusters.removeLayer(august)
+				clusters.removeLayer(september)
+				clusters.removeLayer(october)
+				clusters.removeLayer(november)
+				clusters.removeLayer(december)
+				break;
+			  case "July":
+			    clusters.addLayer(july)
+				clusters.removeLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(march)
+				clusters.removeLayer(april)
+				clusters.removeLayer(may)
+				clusters.removeLayer(june)
+				clusters.removeLayer(august)
+				clusters.removeLayer(september)
+				clusters.removeLayer(october)
+				clusters.removeLayer(november)
+				clusters.removeLayer(december)
+				break;
+			  case "August":
+			    clusters.addLayer(august)
+				clusters.removeLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(march)
+				clusters.removeLayer(april)
+				clusters.removeLayer(may)
+				clusters.removeLayer(june)
+				clusters.removeLayer(july)
+				clusters.removeLayer(september)
+				clusters.removeLayer(october)
+				clusters.removeLayer(november)
+				clusters.removeLayer(december)
+				break;
+			  case "September":
+			    clusters.addLayer(september)
+				clusters.removeLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(march)
+				clusters.removeLayer(april)
+				clusters.removeLayer(may)
+				clusters.removeLayer(june)
+				clusters.removeLayer(july)
+				clusters.removeLayer(august)
+				clusters.removeLayer(october)
+				clusters.removeLayer(november)
+				clusters.removeLayer(december)
+				break;
+			  case "October":
+			    clusters.addLayer(october)
+				clusters.removeLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(march)
+				clusters.removeLayer(april)
+				clusters.removeLayer(may)
+				clusters.removeLayer(june)
+				clusters.removeLayer(july)
+				clusters.removeLayer(august)
+				clusters.removeLayer(september)
+				clusters.removeLayer(november)
+				clusters.removeLayer(december)
+				break;
+			  case "November":
+			    clusters.addLayer(november)
+				clusters.removeLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(march)
+				clusters.removeLayer(april)
+				clusters.removeLayer(may)
+				clusters.removeLayer(june)
+				clusters.removeLayer(july)
+				clusters.removeLayer(august)
+				clusters.removeLayer(september)
+				clusters.removeLayer(october)
+				clusters.removeLayer(december)
+				break;
+			  case "December":
+			    clusters.addLayer(december)
+				clusters.removeLayer(january)
+				clusters.removeLayer(february)
+				clusters.removeLayer(march)
+				clusters.removeLayer(april)
+				clusters.removeLayer(may)
+				clusters.removeLayer(june)
+				clusters.removeLayer(july)
+				clusters.removeLayer(august)
+				clusters.removeLayer(september)
+				clusters.removeLayer(october)
+				clusters.removeLayer(november)
+				break;
+			  case "Show All Times":
+				clusters.addLayer(midSix)
+				clusters.addLayer(sixNoon)
+				clusters.addLayer(noonSixPM)
+				clusters.addLayer(sixpmMid)
+				break;
+			  case "Remove All Times":
+				clusters.removeLayer(midSix)
+				clusters.removeLayer(sixNoon)
+				clusters.removeLayer(noonSixPM)
+				clusters.removeLayer(sixpmMid)
+				break;
+			  case "00:00:00 - 06:00:00":
+			    clusters.addLayer(midSix)
+				clusters.removeLayer(sixNoon)
+				clusters.removeLayer(noonSixPM)
+				clusters.removeLayer(sixpmMid)
+			    break;
+			  case "06:00:00 - 12:00:00":
+			    clusters.addLayer(sixNoon)
+			    clusters.removeLayer(midSix)
+				clusters.removeLayer(noonSixPM)
+				clusters.removeLayer(sixpmMid)
+			    break;
+			  case "12:00:00 - 18:00:00":
+			    clusters.addLayer(noonSixPM)
+			    clusters.removeLayer(midSix)
+				clusters.removeLayer(sixNoon)
+				clusters.removeLayer(sixpmMid)
+			    break;
+			  case "18:00:00 - 24:00:00":
+			    clusters.addLayer(sixpmMid)
+			    clusters.removeLayer(midSix)
+				clusters.removeLayer(sixNoon)
+				clusters.removeLayer(noonSixPM)
+			    break;
+			}
+			if ($(".navbar-collapse.in").length > 0) {
+			  $(".navbar-toggle").click();
+			}
+		  });
 	  
 		map.addLayer(clusters);
 		
@@ -1380,7 +1817,7 @@ legend.onAdd = function (map) {
 
 	var div = L.DomUtil.create('div', 'info legend'),
 		grades = [0, 20, 40, 60, 80],
-		labels = ['<strong> Number of Crimes </strong>'],
+		labels = ['<strong> Number of Crimes </strong> <br/>(Aldermanic Districts)'],
 		from, to;
 
 	for (var i = 0; i < grades.length; i++) {
